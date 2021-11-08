@@ -17,17 +17,20 @@ r = requests.get(URL)
 soup = BeautifulSoup(r.content, 'html.parser') # If this line causes an error, run 'pip install html5lib' or install html5lib
 data = []
  
-td_iterator = iter(soup.find_all('tr'))
-data_iterator = iter(td_iterator.find_all('td'))
+
+data_iterator = iter(soup.find_all('td'))
 while True:
-    try:
-        Location = next(data_iterator).text
-        ActualMM = next(data_iterator).text
-        NormalMM = next(data_iterator).text 
-        # For 'confirmed' and 'deaths',
-        # make sure to remove the commas
-        # and convert to int
-        print(f'{Location} : {ActualMM} : {NormalMM}')
-    except StopIteration:
-        break
+            try:
+                Location = next(data_iterator).text
+                ActualMM = next(data_iterator).text
+                NormalMM = next(data_iterator).text
+                next(data_iterator).text
+                next(data_iterator).text
+                next(data_iterator).text
+                next(data_iterator).text
+                print(f'{Location} : {ActualMM} : {NormalMM}')
+            except Exception as err:
+                print(err)            
+
+# Problem 4 - Inject the data in MongoDB
     
